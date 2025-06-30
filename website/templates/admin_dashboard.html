@@ -69,7 +69,7 @@
           <td>{{ c.description }}</td>
           <td>{{ c.status }}</td>
           <td>{{ c.employee.name if c.employee else "Unassigned" }}</td>
-          <td>{{ c.escalate_remarks if c.status == 'Escalated' else "-" }}</td>
+          <td>{{ c.escalate_remarks if c.escalate_remarks else "-" }}</td>
         </tr>
       {% endfor %}
     </tbody>

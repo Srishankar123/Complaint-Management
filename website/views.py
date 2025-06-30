@@ -89,13 +89,18 @@ def update_complaint(id):
     complaint = Complaint.query.get_or_404(id)
     action = request.form.get('action')
 
+    remarks = request.form.get('remarks')
+
     if action == 'close':
         complaint.status = 'Closed'
+        complaint.escalate_remarks = remarks  # Save remarks even when closing
     elif action == 'escalate':
         complaint.status = 'Escalated'
-        complaint.escalate_remarks = request.form.get('remarks')
+        complaint.escalate_remarks = remarks
+
 
     db.session.commit()
+
     flash(f"✅ Complaint #{complaint.id} updated.", "info")
 
     return redirect(url_for('views.employee_dashboard' if not current_user.is_admin else 'views.admin_dashboard'))
