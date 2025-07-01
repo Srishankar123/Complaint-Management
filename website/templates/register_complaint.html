@@ -17,18 +17,31 @@
         <textarea name="description" class="form-control" id="description" rows="4" placeholder="Describe the complaint" required></textarea>
       </div>
 
-      <div class="mb-3">
-        <label for="assigned_to" class="form-label">Assign to Employee</label>
-        <select name="assigned_to" id="assigned_to" class="form-select" required>
-          <option value="" disabled selected>Select employee</option>
-          {% for emp in employees %}
-            <option value="{{ emp.id }}">{{ emp.name }}</option>
-          {% endfor %}
-        </select>
-      </div>
+        <div class="mb-3">
+      <label for="assigned_to_select" class="form-label">Assign to Employee</label>
+      <select name="assigned_to" id="assigned_to_select" class="form-select" required>
+        <option value="" disabled selected>Select employee</option>
+        {% for emp in employees %}
+          <option value="{{ emp.id }}">{{ emp.name }}</option>
+        {% endfor %}
+      </select>
+  </div>
+
 
       <button type="submit" class="btn btn-success w-100">Register Complaint</button>
     </form>
   </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    $(document).ready(function() {
+      $('#assigned_to_select').select2({
+        placeholder: "Select employee",
+        allowClear: true
+      });
+    });
+  </script>
 {% endblock %}
