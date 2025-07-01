@@ -1,17 +1,24 @@
-venv
-# Byte-compiled / cache
-__pycache__/
-*.py[cod]
+# venv
+# # Byte-compiled / cache
+# __pycache__/
+# *.py[cod]
 
-# SQLite DB (optional if you don't want to push DB)
+# # SQLite DB (optional if you don't want to push DB)
+# instance/database.db
+
+# # Environment files
+# .env
+# .flaskenv
+
+# # Flask migration folder
+# migrations/
+
+# # IDEs
+# .idea/
 instance/database.db
-
-# Environment files
+__pycache__/
+*.pyc
 .env
 .flaskenv
-
-# Flask migration folder
 migrations/
-
-# IDEs
 .idea/
